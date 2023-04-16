@@ -101,13 +101,14 @@ public typealias SpeechErrorHandler = (Error?) -> Void
     let node = audioEngine.inputNode
     let recordingFormat = node.outputFormat(forBus: 0)
     
-    speechRequest = SFSpeechAudioBufferRecognitionRequest()
+    let speechRequest = SFSpeechAudioBufferRecognitionRequest()
     
     node.installTap(onBus: 0,
                     bufferSize: SpeechController.AUDIO_BUFFER_SIZE,
                     format: recordingFormat) { [weak self] (buffer, _) in
-                      self?.speechRequest?.append(buffer)
+        self?.speechRequest?.append(buffer)
     }
+      
     audioEngine.prepare()
     do {
       try audioEngine.start()
@@ -116,7 +117,7 @@ public typealias SpeechErrorHandler = (Error?) -> Void
       return
     }
     
-    speechTask = speechRecognizer.recognitionTask(with: speechRequest!) { (result, error) in
+    speechTask = speechRecognizer.recognitionTask(with: speechRequest) { (result, error) in
       if let r = result {
         let transcription = r.bestTranscription
         let isFinal = r.isFinal
@@ -125,6 +126,7 @@ public typealias SpeechErrorHandler = (Error?) -> Void
         errorHandler(error)
       }
     }
+      self.speechRequest = speechRequest
   }
   
   /// Method which will stop the recording

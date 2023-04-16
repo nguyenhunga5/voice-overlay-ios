@@ -1,16 +1,14 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "InstantSearchVoiceOverlay",
-        "repositoryURL": "/Users/vladislavfitc/Workspace/voice-overlay-ios",
-        "state": {
-          "branch": "feat/revamp",
-          "revision": "3e09bb7a522e7ad90d17040429ec874911429b3d",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "voice-overlay-ios",
+      "kind" : "localSourceControl",
+      "location" : "/Volumes/Projects/Projects/voice-overlay-ios",
+      "state" : {
+        "branch" : "master",
+        "revision" : "55a1047be9e0d9e4d4295ef127cc31b3ef7b8b54"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }
